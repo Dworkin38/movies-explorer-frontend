@@ -32,6 +32,12 @@
   color: #fff;
 }
 
+.link_type_nav-tab {
+  font-size: 13px;
+  margin-left: 40px;
+  text-decoration-line: underline;
+}
+
 @media screen and (max-width: 320px) {
   .link_size_s {
     font-weight: 500;
@@ -42,5 +48,10 @@
   .link_highlight {
     padding: 5px 12px;
     margin-left: 14px;
+  }
+
+  .link_type_nav-tab {
+    font-size: 11px;
+    margin-left: 24px;
   }
 }

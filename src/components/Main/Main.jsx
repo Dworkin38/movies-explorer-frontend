@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import Promo from '../Promo/Promo';
+import NavTab from '../NavTab/NavTab';
 
 const Main = (props) => (
   <>
@@ -13,6 +14,11 @@ const Main = (props) => (
     </Header>
     <main>
       <Promo />
+      <NavTab>
+        <Link className='link link_type_text link_style_white link_type_nav-tab' to='#project'>О проекте</Link>
+        <Link className='link link_type_text link_style_white link_type_nav-tab' to='#technologies'>Технологии</Link>
+        <Link className='link link_type_text link_style_white link_type_nav-tab' to='#student'>Студент</Link>
+      </NavTab>
     </main>
   </>
 );
