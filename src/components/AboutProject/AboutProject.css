@@ -1,0 +1,127 @@
+.about-project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 40px;
+  padding: 110px max(50px, (50% - var(--max-content-width)/2));
+}
+
+.about-project__main-header {
+  margin:  0 0 70px;
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+.about-project__text-block {
+  margin-bottom: 110px;
+}
+
+.about-project__title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  margin: 0 0 26px;
+}
+
+.about-project__text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about-project__progress {
+  grid-column-start: 1;
+  grid-column-end: -1;
+  display: grid;
+  grid-template-columns: 228px 1fr;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+.about-project__progress-time {
+  margin: 0 0 14px;
+  background: #F2F2F2;
+  padding: 9px 0;
+}
+
+.about-project__progress-subtitle {
+  color: #A0A0A0;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    padding: 90px 50px;
+    grid-column-gap: 30px;
+  }
+
+  .about-project__text-block {
+    margin-bottom: 93px;
+  }
+
+  .about-project__title {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0 0 22px;
+  }
+  
+  .about-project__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-project__progress {
+    grid-template-columns: 140px 1fr;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .about-project {
+    grid-template-columns: 1fr;
+    padding: 70px 18px;
+  }
+
+  .about-project__main-header {
+    margin:  0 0 60px;
+  }
+
+  .about-project__text-block {
+    margin-bottom: 56px;
+  }
+
+  .about-project__text-block:last-child {
+    margin-bottom: 60px;
+  }
+
+  .about-project__title {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0 0 16px;
+  }
+  
+  .about-project__text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__progress {
+    grid-template-columns: 100px 1fr;
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__progress-time {
+    margin: 0 0 14px;
+    background: #F2F2F2;
+    padding: 10px 0;
+  }
+}
+
+.about-project__progress-time_active {
+  background: #2BE080;
+}

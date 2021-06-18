@@ -38,7 +38,7 @@
   text-decoration-line: underline;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 450px) {
   .link_size_s {
     font-weight: 500;
     font-size: 10px;

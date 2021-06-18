@@ -9,13 +9,13 @@
   padding: 24px max(70px, (50% - var(--max-content-width)/2));
 }
 
-@media screen and (max-width: 728px) {
+@media screen and (max-width: 768px) {
   .navtab {
     padding: 24px 50px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 450px) {
   .navtab {
     padding: 25px 18px;
   }

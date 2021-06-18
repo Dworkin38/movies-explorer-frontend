@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import Promo from '../Promo/Promo';
 import NavTab from '../NavTab/NavTab';
+import AboutProject from '../AboutProject/AboutProject';
 
 const Main = (props) => (
   <>
@@ -15,10 +16,11 @@ const Main = (props) => (
     <main>
       <Promo />
       <NavTab>
-        <Link className='link link_type_text link_style_white link_type_nav-tab' to='#project'>О проекте</Link>
-        <Link className='link link_type_text link_style_white link_type_nav-tab' to='#technologies'>Технологии</Link>
-        <Link className='link link_type_text link_style_white link_type_nav-tab' to='#student'>Студент</Link>
+        <a className='link link_type_text link_style_white link_type_nav-tab' href='#project'>О проекте</a>
+        <a className='link link_type_text link_style_white link_type_nav-tab' href='#technologies'>Технологии</a>
+        <a className='link link_type_text link_style_white link_type_nav-tab' href='#student'>Студент</a>
       </NavTab>
+      <AboutProject />
     </main>
   </>
 );

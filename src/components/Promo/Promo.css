@@ -25,7 +25,7 @@
   letter-spacing: -0.04em;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 450px) {
   .promo {
     background-size: 248px 248px;
     padding: 0 10px;
