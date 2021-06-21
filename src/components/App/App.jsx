@@ -4,7 +4,7 @@ import Main from '../Main/Main';
 const App = ({ config, ...props }) => (
   <Switch>
     <Route exact path='/'>
-      <Main techs={config.techs} />
+      <Main config={config.main} />
     </Route>
   </Switch>
 );

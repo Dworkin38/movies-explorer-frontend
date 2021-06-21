@@ -5,8 +5,9 @@ import Promo from '../Promo/Promo';
 import NavTab from '../NavTab/NavTab';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
+import AboutMe from '../AboutMe/AboutMe';
 
-const Main = ({techs, ...props}) => (
+const Main = ({config, ...props}) => (
   <>
     <Header mix='header_style_blue'>
       <Navigation>
@@ -22,7 +23,8 @@ const Main = ({techs, ...props}) => (
         <a className='link link_type_text link_style_white link_type_nav-tab' href='#student'>Студент</a>
       </NavTab>
       <AboutProject />
-      <Techs techs={techs} />
+      <Techs techs={config.techs} />
+      <AboutMe socialLinks={config.socialLinks} />
     </main>
   </>
 );
