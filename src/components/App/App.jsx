@@ -1,10 +1,10 @@
 import { Route, Switch } from 'react-router-dom';
 import Main from '../Main/Main';
 
-const App = () => (
+const App = ({ config, ...props }) => (
   <Switch>
     <Route exact path='/'>
-      <Main />
+      <Main techs={config.techs} />
     </Route>
   </Switch>
 );

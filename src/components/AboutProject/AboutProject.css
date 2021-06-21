@@ -49,6 +49,10 @@
   padding: 9px 0;
 }
 
+.about-project__progress-time_active {
+  background: #2BE080;
+}
+
 .about-project__progress-subtitle {
   color: #A0A0A0;
   margin: 0;
@@ -117,11 +121,6 @@
 
   .about-project__progress-time {
     margin: 0 0 14px;
-    background: #F2F2F2;
     padding: 10px 0;
   }
-}
-
-.about-project__progress-time_active {
-  background: #2BE080;
 }
