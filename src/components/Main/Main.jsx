@@ -7,6 +7,7 @@ import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
+import Footer from '../Footer/Footer';
 
 const Main = ({config, ...props}) => (
   <>
@@ -27,6 +28,7 @@ const Main = ({config, ...props}) => (
       <Techs techs={config.techs} />
       <AboutMe socialLinks={config.socialLinks} />
       <Portfolio portfolio={config.portfolio} />
+      <Footer footerLinks={config.footerLinks} />
     </main>
   </>
 );

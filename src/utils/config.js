@@ -24,7 +24,21 @@ const config = {
         text: 'Одностраничное приложение',
         link: '#',
       },
-    ]
+    ],
+    footerLinks: [
+      {
+        text: 'Яндекс.Практикум',
+        link: '#',
+      },
+      {
+        text: 'Github',
+        link: 'https://github.com/',
+      },
+      {
+        text: 'Facebook',
+        link: 'https://www.facebook.com/',
+      },
+    ],
   },
 };
 
