@@ -10,6 +10,20 @@ const config = {
         text: 'Github',
         link: 'https://github.com/',
       }
+    ],
+    portfolio: [
+      {
+        text: 'Статичный сайт',
+        link: '#',
+      },
+      {
+        text: 'Адаптивный сайт',
+        link: '#',
+      },
+      {
+        text: 'Одностраничное приложение',
+        link: '#',
+      },
     ]
   },
 };

@@ -6,6 +6,7 @@ import NavTab from '../NavTab/NavTab';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
+import Portfolio from '../Portfolio/Portfolio';
 
 const Main = ({config, ...props}) => (
   <>
@@ -25,6 +26,7 @@ const Main = ({config, ...props}) => (
       <AboutProject />
       <Techs techs={config.techs} />
       <AboutMe socialLinks={config.socialLinks} />
+      <Portfolio portfolio={config.portfolio} />
     </main>
   </>
 );
