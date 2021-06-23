@@ -15,7 +15,7 @@ const AboutMe = ({ socialLinks, ...props }) => (
         </p>
         <ul className='about-me__social-links'>
           {socialLinks.map((socialLink, index) => (
-            <li key={index} className='about-me__social-link'><a className='about-me__link link' href={socialLink.link}>{socialLink.text}</a></li>
+            <li key={index} className='about-me__social-link'><a className='about-me__link link' href={socialLink.link} target='_blank' rel="noreferrer">{socialLink.text}</a></li>
           ))}
         </ul>
       </article>

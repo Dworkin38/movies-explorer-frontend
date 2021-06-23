@@ -3,55 +3,6 @@
   transition: opacity .3s ease-in;
 }
 
-.link_type_text {
-  color: #000;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  margin-left: 20px;
-}
-
-.link_type_text:first-child {
-  margin: 0;
-}
-
 .link:hover {
   opacity: 0.7;
-}
-
-.link_highlight {
-  color: #000;
-  padding: 8px 20px;
-  background-color: #2BE080;
-  border-radius: 3px;
-  margin-left: 30px;
-}
-
-.link_style_white {
-  color: #fff;
-}
-
-.link_type_nav-tab {
-  font-size: 13px;
-  margin-left: 40px;
-  text-decoration-line: underline;
-}
-
-@media screen and (max-width: 450px) {
-  .link_size_s {
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 16px;
-  }
-
-  .link_highlight {
-    padding: 5px 12px;
-    margin-left: 14px;
-  }
-
-  .link_type_nav-tab {
-    font-size: 11px;
-    margin-left: 24px;
-  }
 }

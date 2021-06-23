@@ -4,7 +4,7 @@ const Footer = ({footerLinks, ...props}) => (
     <p className='footer__copyright'>&copy; 2021</p>
     <ul className='footer__items'>
       {footerLinks.map((footerLink, index) => (
-        <li key={index} className='footer__item'><a className='footer__link link' href={footerLink.link}>{footerLink.text}</a></li>
+        <li key={index} className='footer__item'><a className='footer__link link' href={footerLink.link} target='_blank' rel="noreferrer">{footerLink.text}</a></li>
       ))}
     </ul>
   </footer>

@@ -4,8 +4,8 @@ const Portfolio = ({portfolio, ...props}) => (
     <ul className='portfolio__works'>
       {portfolio.map((work, index) => (
         <li key={index} className='portfolio__work'>
-          <a className='portfolio__link link' href={work.link}>{work.text}</a>
-          <a className='portfolio__link link' href={work.link}>&#8599;</a>
+          <a className='portfolio__link link' href={work.link} target='_blank' rel="noreferrer">{work.text}</a>
+          <a className='portfolio__link link' href={work.link} target='_blank' rel="noreferrer">&#8599;</a>
         </li>
       ))}
     </ul>

@@ -8,31 +8,31 @@ const config = {
       },
       {
         text: 'Github',
-        link: 'https://github.com/',
+        link: 'https://github.com/Dworkin38',
       }
     ],
     portfolio: [
       {
         text: 'Статичный сайт',
-        link: '#',
+        link: 'https://github.com/Dworkin38/how-to-learn',
       },
       {
         text: 'Адаптивный сайт',
-        link: '#',
+        link: 'https://github.com/Dworkin38/russian-travel',
       },
       {
         text: 'Одностраничное приложение',
-        link: '#',
+        link: 'https://github.com/Dworkin38/react-mesto-api-full',
       },
     ],
     footerLinks: [
       {
         text: 'Яндекс.Практикум',
-        link: '#',
+        link: 'https://praktikum.yandex.ru/',
       },
       {
         text: 'Github',
-        link: 'https://github.com/',
+        link: 'https://github.com/Dworkin38',
       },
       {
         text: 'Facebook',

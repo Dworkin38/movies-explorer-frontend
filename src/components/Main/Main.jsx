@@ -13,16 +13,16 @@ const Main = ({config, ...props}) => (
   <>
     <Header mix='header_style_blue'>
       <Navigation>
-        <Link className='link link_type_text link_size_s link_style_white' to='/signup'>Регистрация</Link>
-        <Link className='link link_type_text link_size_s link_highlight' to='/signin'>Войти</Link>
+        <Link className='link navigation__link navigation__link_type_unauthorized' to='/signup'>Регистрация</Link>
+        <Link className='link navigation__link navigation__link_type_unauthorized navigation__link_style_highlight' to='/signin'>Войти</Link>
       </Navigation>
     </Header>
     <main>
       <Promo />
       <NavTab>
-        <a className='link link_type_text link_style_white link_type_nav-tab' href='#project'>О проекте</a>
-        <a className='link link_type_text link_style_white link_type_nav-tab' href='#technologies'>Технологии</a>
-        <a className='link link_type_text link_style_white link_type_nav-tab' href='#student'>Студент</a>
+        <a className='link navtab__link' href='#project'>О проекте</a>
+        <a className='link navtab__link' href='#technologies'>Технологии</a>
+        <a className='link navtab__link' href='#student'>Студент</a>
       </NavTab>
       <AboutProject />
       <Techs techs={config.techs} />
