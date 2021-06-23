@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import Burger from '../Burger/Burger';
+import SearchForm from '../SearchForm/SearchForm';
 
 const Movies = () => {
   const [isNavigationOpen, setIsNavigationOpen] = React.useState(false);
@@ -25,6 +26,7 @@ const Movies = () => {
         <Burger onClick={onClickBurger} isOpen={isNavigationOpen}/>
       </Header>
       <main>
+        <SearchForm />
       </main>
     </>
   );
