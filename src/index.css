@@ -1,3 +1,4 @@
+@import url('./components/Body/Body.css');
 @import url('./vendor/fonts/fonts.css');
 @import url('./components/MainHeader/MainHeader.css');
 @import url('./components/Link/Link.css');
@@ -21,3 +22,4 @@
 @import url('./components/MoviesCard/MoviesCard.css');
 @import url('./components/MoviesCardList/MoviesCardList.css');
 @import url('./components/Profile/Profile.css');
+@import url('./components/AuthorizationForm/AuthorizationForm.css');
