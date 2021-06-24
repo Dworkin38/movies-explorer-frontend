@@ -9,9 +9,6 @@ import Login from '../Login/Login';
 
 const App = ({ config, ...props }) => (
   <Switch>
-    <Route exact path='/'>
-      <Main config={config.main} />
-    </Route>
     <Route path='/movies'>
       <Movies config={config.main} />
     </Route>
@@ -27,9 +24,10 @@ const App = ({ config, ...props }) => (
     <Route path='/signin'>
       <Login />
     </Route>
-    <Route path='*'>
-      <NotFoundPage />
+    <Route exact path='/'>
+      <Main config={config.main} />
     </Route>
+    <Route component={NotFoundPage} />
   </Switch>
 );
 
