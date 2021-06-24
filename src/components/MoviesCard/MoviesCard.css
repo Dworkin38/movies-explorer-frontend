@@ -55,10 +55,15 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .movie-card__button_liked {
   background-image: url('../../images/MoviesCard/saved.svg');
+}
+
+.movie-card__button_delete {
+  background-image: url('../../images/MoviesCard/delete.svg');
 }
 
 @media screen and (max-width: 768px) {

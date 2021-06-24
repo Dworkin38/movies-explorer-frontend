@@ -2,6 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 import Main from '../Main/Main';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
 
 const App = ({ config, ...props }) => (
   <Switch>
@@ -10,6 +11,9 @@ const App = ({ config, ...props }) => (
     </Route>
     <Route path='/movies'>
       <Movies config={config.main} />
+    </Route>
+    <Route path='/saved-movies'>
+      <SavedMovies config={config.main} />
     </Route>
     <Route path='*'>
       <NotFoundPage />
