@@ -3,7 +3,7 @@
   grid-template-columns: 1fr;
   justify-items: center;
   background-color: #F5F5F5;
-  padding: 110px max(50px, (50% - var(--max-content-width)/2));
+  padding: 110px max(50px, (calc(50% - var(--max-content-width)/2)));
 }
 
 .techs__main-header {

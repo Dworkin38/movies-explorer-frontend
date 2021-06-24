@@ -1,7 +1,7 @@
 .about-me {
   display: flex;
   flex-direction: column;
-  padding: 110px max(50px, (50% - var(--max-content-width)/2)) 100px;
+  padding: 110px max(50px, (calc(50% - var(--max-content-width)/2))) 100px;
 }
 
 .about-me__main-header {

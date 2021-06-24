@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 24px max(70px, (50% - var(--max-content-width)/2));
+  padding: 24px max(70px, (calc(50% - var(--max-content-width)/2)));
 }
 
 .navtab__link {

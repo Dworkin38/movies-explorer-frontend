@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 18px max(30px, (50% - var(--max-content-width)/2));
+  padding: 18px max(30px, (calc(50% - var(--max-content-width)/2)));
 }
 
 .header_style_blue {

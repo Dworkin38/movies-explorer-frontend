@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 70px max(30px, (50% - var(--max-content-width)/2)) 0;
+  padding: 70px max(30px, (calc(50% - var(--max-content-width)/2))) 0;
 }
 
 .movie-card-list__items {

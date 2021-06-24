@@ -1,7 +1,7 @@
 .portfolio {
   display: flex;
   flex-direction: column;
-  padding: 0 max(50px, (50% - var(--max-content-width)/2)) 125px;
+  padding: 0 max(50px, (calc(50% - var(--max-content-width)/2))) 125px;
 }
 
 .portfolio__title {

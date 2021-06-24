@@ -2,7 +2,7 @@
   width: 100%;
   box-sizing: border-box;
   background-color: #073042;
-  background-image: url('../../images/Promo/promo-bg.svg');
+  background-image: url(../../images/Promo/promo-bg.svg);
   background-repeat: no-repeat;
   background-size: 320px 320px;
   background-position: center;
@@ -11,7 +11,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 0 max(19px, (50% - var(--max-content-width)/2));
+  padding: 0 max(19px, calc((50% - var(--max-content-width)/2)));
 }
 
 .promo__title {

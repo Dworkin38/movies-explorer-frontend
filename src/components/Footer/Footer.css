@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 79px max(30px, (50% - var(--max-content-width)/2)) 20px;
+  padding: 79px max(30px, (calc(50% - var(--max-content-width)/2))) 20px;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
