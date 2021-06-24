@@ -9,7 +9,7 @@ const App = ({ config, ...props }) => (
       <Main config={config.main} />
     </Route>
     <Route path='/movies'>
-      <Movies />
+      <Movies config={config.main} />
     </Route>
     <Route path='*'>
       <NotFoundPage />

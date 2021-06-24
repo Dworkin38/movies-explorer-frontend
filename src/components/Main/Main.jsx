@@ -28,8 +28,8 @@ const Main = ({config, ...props}) => (
       <Techs techs={config.techs} />
       <AboutMe socialLinks={config.socialLinks} />
       <Portfolio portfolio={config.portfolio} />
-      <Footer footerLinks={config.footerLinks} />
     </main>
+    <Footer footerLinks={config.footerLinks} />
   </>
 );
 

@@ -51,6 +51,7 @@
   background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .search-form__short-film {

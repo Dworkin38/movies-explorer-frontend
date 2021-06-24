@@ -4,8 +4,10 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import Burger from '../Burger/Burger';
 import SearchForm from '../SearchForm/SearchForm';
+import MovieCardList from '../MoviesCardList/MoviesCardList';
+import Footer from '../Footer/Footer';
 
-const Movies = () => {
+const Movies = ({config, ...props}) => {
   const [isNavigationOpen, setIsNavigationOpen] = React.useState(false);
   const onClickBurger = () => {
     setIsNavigationOpen(!isNavigationOpen);
@@ -27,7 +29,9 @@ const Movies = () => {
       </Header>
       <main>
         <SearchForm />
+        <MovieCardList isSaved={false} />
       </main>
+      <Footer footerLinks={config.footerLinks} />
     </>
   );
 };
