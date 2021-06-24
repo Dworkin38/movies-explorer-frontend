@@ -1,6 +1,6 @@
 .burger {
   box-sizing: border-box;
-  padding: 11px 8px;
+  padding: 7px 5px;
   display: none;
   cursor: pointer;
 }

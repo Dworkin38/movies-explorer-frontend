@@ -26,13 +26,14 @@ const SearchForm = () => {
           placeholder='Фильм'
           value={value}
           onChange={handlerOnChangeInputText} />
-        <button className='search-form__search-button' type='submit' />
+        <button className='button search-form__search-button' type='submit' />
       </div>
       <label className='search-form__short-film'>
         <input
           type='checkbox'
           className='search-form__checkbox-hidden'
           checked={isShortFilm}
+          required
           onChange={handlerChangeShortFilm} />
         <span className={`search-form__toggle-track ${isShortFilm ? 'search-form__toggle-track_active' : ''}`} />
         <span className='search-form__short-film-text'>Короткометражки</span>

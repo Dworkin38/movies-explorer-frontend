@@ -32,7 +32,7 @@ const MovieCardList = ({isSaved, ...props}) => {
         ))}
       </ul>
       <div className='movie-card-list__button-wrapper'>
-        {movies.length > sizeArray && <button className='movie-card-list__button' onClick={handlerMoreButtonClick}>Ещё</button>}
+        {movies.length > sizeArray && <button className='button movie-card-list__button' onClick={handlerMoreButtonClick}>Ещё</button>}
       </div>
     </section>
   );

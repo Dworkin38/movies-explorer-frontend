@@ -17,9 +17,9 @@ const MoviesCard = ({ movie, isSaved, ...props }) => {
       <h3 className='movies-card__title'>{movie.name}</h3>
       {
         isSaved ? (
-          <button className='movie-card__button movie-card__button_delete' type='button' onClick={handlerClikeDelete} />
+          <button className='button movie-card__button movie-card__button_delete' type='button' onClick={handlerClikeDelete} />
         ) : (
-          <button className={`movie-card__button ${like ? 'movie-card__button_liked' : ''}`} type='button' onClick={handlerClikeLike} />
+          <button className={`button movie-card__button ${like ? 'movie-card__button_liked' : ''}`} type='button' onClick={handlerClikeLike} />
         )}
       <p className='movies-card__duration'>{movie.duration}</p>
     </article>

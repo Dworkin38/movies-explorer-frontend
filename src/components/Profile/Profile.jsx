@@ -3,15 +3,23 @@ import { Link, NavLink } from 'react-router-dom';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import Burger from '../Burger/Burger';
-import SearchForm from '../SearchForm/SearchForm';
-import MovieCardList from '../MoviesCardList/MoviesCardList';
-import Footer from '../Footer/Footer';
 
-const SavedMovies = ({ config, ...props }) => {
+const Profile = () => {
   const [isNavigationOpen, setIsNavigationOpen] = React.useState(false);
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+
   const onClickBurger = () => {
     setIsNavigationOpen(!isNavigationOpen);
   }
+
+  const handlerChangeName = (event) => {
+    setName(event.target.value);
+  };
+
+  const handlerChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
 
   return (
     <>
@@ -33,13 +41,41 @@ const SavedMovies = ({ config, ...props }) => {
         </Navigation>
         <Burger onClick={onClickBurger} isOpen={isNavigationOpen} />
       </Header>
-      <main>
-        <SearchForm />
-        <MovieCardList isSaved={true} />
+      <main className='profile'>
+        <form className='profile__form'>
+          <h1 className='profile__title'>Привет, Виталий!</h1>
+          <label className='profile__input-container'>
+            <span className='profile__input-title'>Имя</span>
+            <input
+              type='text'
+              className='profile__input'
+              placeholder='Виталий'
+              minLength='2'
+              maxLength='30'
+              required
+              value={name}
+              onChange={handlerChangeName}
+            />
+          </label>
+          <label className='profile__input-container'>
+            <span className='profile__input-title'>E-mail</span>
+            <input
+              type='email'
+              className='profile__input'
+              placeholder='pochta@yandex.ru'
+              required
+              value={email}
+              onChange={handlerChangeEmail}
+            />
+          </label>
+          <div className='profile__button-container'>
+            <button type='submit' className='button profile__button'>Редактировать</button>
+            <button type='button' className='button profile__button profile__button_style_exit'>Выйти из аккаунта</button>
+          </div>
+        </form>
       </main>
-      <Footer footerLinks={config.footerLinks} />
     </>
   );
-};
+}
 
-export default SavedMovies;
+export default Profile;
