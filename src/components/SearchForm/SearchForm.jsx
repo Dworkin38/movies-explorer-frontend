@@ -1,8 +1,10 @@
 import React from 'react';
+import { PopupContext } from '../../contexts/PopupContext';
 
 const SearchForm = () => {
   const [value, setValue] = React.useState('');
   const [isShortFilm, setIsShortFilm] = React.useState(false);
+  const { handlerOpenPopup } = React.useContext(PopupContext);
 
   const handlerOnChangeInputText = (event) => {
     setValue(event.target.value);
@@ -10,7 +12,12 @@ const SearchForm = () => {
 
   const handlerSubmit = (event) => {
     event.preventDefault();
-    console.log(value);
+    
+    if(value === '') {
+      handlerOpenPopup('Нужно ввести ключевое слово');
+    } else {
+      console.log(value);
+    }
   }
 
   const handlerChangeShortFilm = () => {
@@ -33,7 +40,6 @@ const SearchForm = () => {
           type='checkbox'
           className='search-form__checkbox-hidden'
           checked={isShortFilm}
-          required
           onChange={handlerChangeShortFilm} />
         <span className={`search-form__toggle-track ${isShortFilm ? 'search-form__toggle-track_active' : ''}`} />
         <span className='search-form__short-film-text'>Короткометражки</span>
