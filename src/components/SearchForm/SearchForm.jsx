@@ -1,27 +1,31 @@
 import React from 'react';
 import { PopupContext } from '../../contexts/PopupContext';
 
-const SearchForm = () => {
-  const [value, setValue] = React.useState('');
-  const [isShortFilm, setIsShortFilm] = React.useState(false);
+const SearchForm = ({
+  values = {
+    text: '',
+    isShortFilm: false,
+  },
+  onChange = () => {},
+  onSearch = () => {}
+}) => {
+
   const { handlerOpenPopup } = React.useContext(PopupContext);
 
-  const handlerOnChangeInputText = (event) => {
-    setValue(event.target.value);
+  const handlerOnChange = (event) => {
+    const input = event.target;
+    const { type, name, value, checked } = input;
+    onChange({ ...values, [name]: type === "checkbox" ? checked : value });
   };
 
   const handlerSubmit = (event) => {
     event.preventDefault();
     
-    if(value === '') {
+    if(values.text === '') {
       handlerOpenPopup('Нужно ввести ключевое слово');
     } else {
-      console.log(value);
+      onSearch();
     }
-  }
-
-  const handlerChangeShortFilm = () => {
-    setIsShortFilm(!isShortFilm);
   }
 
   return (
@@ -31,17 +35,19 @@ const SearchForm = () => {
         <input
           className='search-form__input-text'
           placeholder='Фильм'
-          value={value}
-          onChange={handlerOnChangeInputText} />
+          name='text'
+          value={values.text}
+          onChange={handlerOnChange} />
         <button className='button search-form__search-button' type='submit' />
       </div>
       <label className='search-form__short-film'>
         <input
           type='checkbox'
+          name='isShortFilm'
           className='search-form__checkbox-hidden'
-          checked={isShortFilm}
-          onChange={handlerChangeShortFilm} />
-        <span className={`search-form__toggle-track ${isShortFilm ? 'search-form__toggle-track_active' : ''}`} />
+          checked={values.isShortFilm}
+          onChange={handlerOnChange} />
+        <span className={`search-form__toggle-track ${values.isShortFilm ? 'search-form__toggle-track_active' : ''}`} />
         <span className='search-form__short-film-text'>Короткометражки</span>
       </label>
     </form>
