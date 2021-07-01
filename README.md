@@ -26,4 +26,4 @@
 
 * Публичный ip: 178.154.201.82
 
-* URL: http://mymovieplases.nomoredomains.club/
+* URL: https://mymovieplases.nomoredomains.club/
