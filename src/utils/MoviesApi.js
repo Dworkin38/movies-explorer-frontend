@@ -21,8 +21,8 @@ export const getMovies = () => {
           trailer: movie.trailerLink,
           thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
           movieId: movie.id,
-          nameRU: movie.nameRU,
-          nameEN: movie.nameEN,
+          nameRU: movie.nameRU || 'Нету названия',
+          nameEN: movie.nameEN || 'Нету названия',
         }
       });
     })

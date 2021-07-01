@@ -7,7 +7,8 @@ const SearchForm = ({
     isShortFilm: false,
   },
   onChange = () => {},
-  onSearch = () => {}
+  onSearch = () => {},
+  isSaved = false,
 }) => {
 
   const { handlerOpenPopup } = React.useContext(PopupContext);
@@ -22,7 +23,7 @@ const SearchForm = ({
     event.preventDefault();
     
     if(values.text === '') {
-      handlerOpenPopup('Нужно ввести ключевое слово');
+      isSaved ? onSearch(values.text) : handlerOpenPopup('Нужно ввести ключевое слово');
     } else {
       onSearch();
     }

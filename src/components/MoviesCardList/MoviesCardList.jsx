@@ -2,13 +2,13 @@ import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import useCardsDimensions from "../../hooks/useCardsDimensions";
 
-const MovieCardList = ({ isSaved, movies, ...props }) => {
+const MovieCardList = ({ isSaved, movies,onLike, onDelete, ...props }) => {
   const {countCards, stepUpCards} = useCardsDimensions();
   const [moreCards, setMoreCards] = React.useState(0);
   const handlerMoreButtonClick = () => {
     setMoreCards(moreCards + 1);
   }
-
+  
   return (
     <section className='movie-card-list'>
       {
@@ -17,12 +17,12 @@ const MovieCardList = ({ isSaved, movies, ...props }) => {
             <ul className='movie-card-list__items'>
               {movies.slice(0, countCards + moreCards*stepUpCards).map((movie) => (
                 <li key={movie.movieId} className='movie-card-list__item'>
-                  <MoviesCard movie={movie} isSaved={isSaved} />
+                  <MoviesCard movie={movie} isSaved={isSaved} onLike={onLike} onDelete={onDelete}/>
                 </li>
               ))}
             </ul>
             <div className='movie-card-list__button-wrapper'>
-              {movies.length > countCards && <button className='button movie-card-list__button' onClick={handlerMoreButtonClick}>Ещё</button>}
+              {!isSaved && movies.length > countCards && <button className='button movie-card-list__button' onClick={handlerMoreButtonClick}>Ещё</button>}
             </div>
           </>) : (<p className='movie-card-list__message'>Ничего не найдено</p>)
         ) : (

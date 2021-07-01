@@ -6,12 +6,29 @@ import Burger from '../Burger/Burger';
 import SearchForm from '../SearchForm/SearchForm';
 import MovieCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
+import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
+import { useSearchMovies } from '../../hooks/useSearchMovies';
 
-const SavedMovies = ({ config, ...props }) => {
+const SavedMovies = ({ config, onDelete, ...props }) => {
   const [isNavigationOpen, setIsNavigationOpen] = React.useState(false);
   const onClickBurger = () => {
     setIsNavigationOpen(!isNavigationOpen);
   }
+  const { savedMovies } = React.useContext(SavedMoviesContext);
+  const { findMovies, searchMovies } = useSearchMovies();
+  const [searchQuery, setSearchQuery] = React.useState({
+    text: '',
+    isShortFilm: false,
+  });
+
+  const handlerSearchFilm = () => {
+    searchMovies(savedMovies, searchQuery);
+  };
+
+  React.useEffect(() => {
+    searchMovies(savedMovies, searchQuery);
+
+  }, [savedMovies, searchQuery.isShortFilm])
 
   return (
     <>
@@ -33,9 +50,9 @@ const SavedMovies = ({ config, ...props }) => {
         </Navigation>
         <Burger onClick={onClickBurger} isOpen={isNavigationOpen} />
       </Header>
-      <main>
-        <SearchForm />
-        <MovieCardList isSaved={true} />
+      <main className='saved-movies'>
+        <SearchForm isSaved={true} onSearch={handlerSearchFilm} values={searchQuery} onChange={setSearchQuery} />
+        <MovieCardList isSaved={true} movies={findMovies} onDelete={onDelete} />
       </main>
       <Footer footerLinks={config.footerLinks} />
     </>

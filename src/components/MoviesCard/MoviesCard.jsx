@@ -1,23 +1,20 @@
 import React from "react";
+import { SavedMoviesContext } from "../../contexts/SavedMoviesContext";
 
-const MoviesCard = ({ movie, isSaved, ...props }) => {
-  const [like, setLike] = React.useState(false);
-
+const MoviesCard = ({ movie, isSaved,onLike, onDelete, ...props }) => {
+  const {savedMovies} = React.useContext(SavedMoviesContext);
+  const [like, setLike] = React.useState(savedMovies.some((savedMovie) => savedMovie.movieId === movie.movieId));
   const handlerClikeLike = () => {
-    setLike(!like);
+    like ? onDelete(movie.movieId, setLike) : onLike(movie, setLike);
   }
-
-  const handlerClikeDelete = () => {
-    console.log('delete')
-  }
-
+ 
   return (
     <article className='movies-card'>
       <a className='link movies-card__link' href={movie.trailer} target='_blank' rel="noreferrer"><img className='movies-card__img' src={movie.image} alt={movie.nameRU} /></a>
       <h3 className='movies-card__title'>{movie.nameRU}</h3>
       {
         isSaved ? (
-          <button className='button movie-card__button movie-card__button_delete' type='button' onClick={handlerClikeDelete} />
+          <button className='button movie-card__button movie-card__button_delete' type='button' onClick={() => {onDelete(movie.movieId, setLike)}} />
         ) : (
           <button className={`button movie-card__button ${like ? 'movie-card__button_liked' : ''}`} type='button' onClick={handlerClikeLike} />
         )}

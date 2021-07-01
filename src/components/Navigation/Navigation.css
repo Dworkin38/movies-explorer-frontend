@@ -29,6 +29,10 @@
   color: #000;
 }
 
+.navigation__link_white {
+  color: #FFF;
+}
+
 .navigation__link_active {
   font-weight: 500;
 }
@@ -61,6 +65,10 @@
   font-size: 14px;
   line-height: 16px;
   color: #000;
+}
+
+.navigation__profile_white {
+  color: #FFF;
 }
 
 .navigation__profile-icon {
@@ -121,6 +129,10 @@
     line-height: 22px;
   }
 
+  .navigation__link_white {
+    color: #000;
+  }
+
   .navigation__link_active {
     padding: 0 0 4px;
     border-bottom: 2px solid #000;
@@ -135,6 +147,10 @@
   .navigation__profile {
     margin: 0 0 92px;
     align-self: flex-end;
+  }
+
+  .navigation__profile_white {
+    color: #000;
   }
 
   .navigation__overlay {

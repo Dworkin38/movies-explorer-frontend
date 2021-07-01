@@ -3,22 +3,29 @@ import { Link, NavLink } from 'react-router-dom';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import Burger from '../Burger/Burger';
+import { useFormWithValidation } from '../../hooks/useFormWithValidation';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-const Profile = () => {
+const Profile = ({onUpdateMe, onUserExit, ...props}) => {
   const [isNavigationOpen, setIsNavigationOpen] = React.useState(false);
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-
+  const { values, errors, isValid, handleChange } = useFormWithValidation({
+    name: '',
+    email: '',
+  });
+  const [isRedact, setRedact] = React.useState(false);
+  const { currentUser } = React.useContext(CurrentUserContext);
+  
   const onClickBurger = () => {
     setIsNavigationOpen(!isNavigationOpen);
-  }
-
-  const handlerChangeName = (event) => {
-    setName(event.target.value);
   };
 
-  const handlerChangeEmail = (event) => {
-    setEmail(event.target.value);
+  const onClikRedact = () => {
+    setRedact(true);
+  };
+
+  const handlerSubmit = (event) => {
+    event.preventDefault();
+    onUpdateMe(values);
   };
 
   return (
@@ -42,35 +49,47 @@ const Profile = () => {
         <Burger onClick={onClickBurger} isOpen={isNavigationOpen} />
       </Header>
       <main className='profile'>
-        <form className='profile__form'>
-          <h1 className='profile__title'>Привет, Виталий!</h1>
+        <form className='profile__form' onSubmit={handlerSubmit}>
+          <h1 className='profile__title'>{`Привет, ${currentUser.name}!`}</h1>
           <label className='profile__input-container'>
             <span className='profile__input-title'>Имя</span>
             <input
-              type='text'
+              type='name'
+              name='name'
               className='profile__input'
-              placeholder='Виталий'
+              placeholder={`${currentUser.name}`}
               minLength='2'
               maxLength='30'
               required
-              value={name}
-              onChange={handlerChangeName}
+              value={values.name}
+              onChange={handleChange}
             />
+            <span className='profile__input-error'>{errors.name}</span>
           </label>
           <label className='profile__input-container'>
             <span className='profile__input-title'>E-mail</span>
             <input
               type='email'
+              name='email'
               className='profile__input'
-              placeholder='pochta@yandex.ru'
+              placeholder={`${currentUser.email}`}
               required
-              value={email}
-              onChange={handlerChangeEmail}
+              value={values.email}
+              onChange={handleChange}
             />
+            <span className='profile__input-error'>{errors.email}</span>
           </label>
           <div className='profile__button-container'>
-            <button type='submit' className='button profile__button'>Редактировать</button>
-            <button type='button' className='button profile__button profile__button_style_exit'>Выйти из аккаунта</button>
+            {
+            !isRedact ? (
+              <>
+              <button type='button' className='button profile__button' onClick={onClikRedact}>Редактировать</button>
+              <button type='button' className='button profile__button profile__button_style_exit' onClick={onUserExit}>Выйти из аккаунта</button>
+              </>
+            ) : (
+              <button type='submit' className={`button profile__button-submit ${!isValid ? 'profile__button-submit_disabled' : ''}`} disabled={!isValid}>Сохранить</button>
+            )
+            }
           </div>
         </form>
       </main>

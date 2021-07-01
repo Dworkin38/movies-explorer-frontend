@@ -1,6 +1,6 @@
 import Header from '../Header/Header';
 
-const AuthorizationForm = ({ title, onSubmit, buttonText, subtitle, ...props }) => {
+const AuthorizationForm = ({ title, onSubmit, buttonText, subtitle, isValid, ...props }) => {
   return (
     <>
       <main className='authorization' >
@@ -11,7 +11,7 @@ const AuthorizationForm = ({ title, onSubmit, buttonText, subtitle, ...props }) 
             {props.children}
           </div>
           <div className='authorization__button-container'>
-            <button className='button authorization__button'>{buttonText}</button>
+            <button className={`button authorization__button ${!isValid ? 'authorization__button_disabled' : ''}`} type='submit' disabled={!isValid}>{buttonText}</button>
             <div className='authorization__subtitle'>{subtitle}</div>
           </div>
         </form>

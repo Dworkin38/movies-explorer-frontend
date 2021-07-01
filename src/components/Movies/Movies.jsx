@@ -10,7 +10,7 @@ import { useSearchMovies } from '../../hooks/useSearchMovies';
 import * as MoviesApi from '../../utils/MoviesApi';
 import { PopupContext } from '../../contexts/PopupContext';
 
-const Movies = ({ config, ...props }) => {
+const Movies = ({ config, onLike, onDelete, ...props }) => {
   const [isNavigationOpen, setIsNavigationOpen] = React.useState(false);
   const onClickBurger = () => {
     setIsNavigationOpen(!isNavigationOpen);
@@ -51,7 +51,7 @@ const Movies = ({ config, ...props }) => {
       </Header>
       <main className='movies'>
         <SearchForm onSearch={handlerSearchFilm} values={searchQuery} onChange={setSearchQuery} />
-        <MovieCardList isSaved={false} movies={findMovies} />
+        <MovieCardList isSaved={false} movies={findMovies} onLike={onLike} onDelete={onDelete} />
       </main>
       <Footer footerLinks={config.footerLinks} />
     </>
