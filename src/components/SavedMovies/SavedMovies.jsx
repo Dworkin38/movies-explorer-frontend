@@ -16,6 +16,7 @@ const SavedMovies = ({ config, onDelete, ...props }) => {
   }
   const { savedMovies } = React.useContext(SavedMoviesContext);
   const { findMovies, searchMovies } = useSearchMovies();
+  const [moviesDisplay, setMoviesDisplay] = React.useState();
   const [searchQuery, setSearchQuery] = React.useState({
     text: '',
     isShortFilm: false,
@@ -26,9 +27,22 @@ const SavedMovies = ({ config, onDelete, ...props }) => {
   };
 
   React.useEffect(() => {
-    searchMovies(savedMovies, searchQuery);
+    localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+    setMoviesDisplay(savedMovies);
+  }, [savedMovies]);
 
-  }, [savedMovies, searchQuery.isShortFilm])
+  React.useEffect(() => {
+    if (findMovies && findMovies.length) {
+      localStorage.setItem('savedMovies', JSON.stringify(findMovies));
+      setMoviesDisplay(findMovies);
+    }
+  }, [findMovies]);
+
+  React.useEffect(()=> {
+    if ( localStorage.getItem('savedMovies') ) {
+      setMoviesDisplay(JSON.parse(localStorage.getItem('savedMovies')));
+    }
+  }, []);
 
   return (
     <>
@@ -52,7 +66,7 @@ const SavedMovies = ({ config, onDelete, ...props }) => {
       </Header>
       <main className='saved-movies'>
         <SearchForm isSaved={true} onSearch={handlerSearchFilm} values={searchQuery} onChange={setSearchQuery} />
-        <MovieCardList isSaved={true} movies={findMovies} onDelete={onDelete} />
+        <MovieCardList isSaved={true} movies={moviesDisplay} onDelete={onDelete} />
       </main>
       <Footer footerLinks={config.footerLinks} />
     </>

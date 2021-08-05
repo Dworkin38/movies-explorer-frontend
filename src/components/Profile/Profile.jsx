@@ -5,8 +5,9 @@ import Navigation from '../Navigation/Navigation';
 import Burger from '../Burger/Burger';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import Preloader from '../Preloader/Preloader';
 
-const Profile = ({onUpdateMe, onUserExit, ...props}) => {
+const Profile = ({ onUpdateMe, onUserExit, ...props }) => {
   const [isNavigationOpen, setIsNavigationOpen] = React.useState(false);
   const { values, errors, isValid, handleChange } = useFormWithValidation({
     name: '',
@@ -14,7 +15,8 @@ const Profile = ({onUpdateMe, onUserExit, ...props}) => {
   });
   const [isRedact, setRedact] = React.useState(false);
   const { currentUser } = React.useContext(CurrentUserContext);
-  
+  const [isLoading, setIsLoading] = React.useState(false);
+
   const onClickBurger = () => {
     setIsNavigationOpen(!isNavigationOpen);
   };
@@ -25,11 +27,12 @@ const Profile = ({onUpdateMe, onUserExit, ...props}) => {
 
   const handlerSubmit = (event) => {
     event.preventDefault();
-    onUpdateMe(values);
+    onUpdateMe(values, setIsLoading);
   };
 
   return (
     <>
+      {isLoading && <Preloader />}
       <Header>
         <Navigation mix={`navigation_type_authorized ${isNavigationOpen && 'navigation_open'}`} isOpen={isNavigationOpen}>
           <Burger mix='navigation__burger' onClick={onClickBurger} isOpen={isNavigationOpen} />
@@ -71,6 +74,7 @@ const Profile = ({onUpdateMe, onUserExit, ...props}) => {
             <input
               type='email'
               name='email'
+              pattern="\S+@\S+\.\S+"
               className='profile__input'
               placeholder={`${currentUser.email}`}
               required
@@ -81,14 +85,14 @@ const Profile = ({onUpdateMe, onUserExit, ...props}) => {
           </label>
           <div className='profile__button-container'>
             {
-            !isRedact ? (
-              <>
-              <button type='button' className='button profile__button' onClick={onClikRedact}>Редактировать</button>
-              <button type='button' className='button profile__button profile__button_style_exit' onClick={onUserExit}>Выйти из аккаунта</button>
-              </>
-            ) : (
-              <button type='submit' className={`button profile__button-submit ${!isValid ? 'profile__button-submit_disabled' : ''}`} disabled={!isValid}>Сохранить</button>
-            )
+              !isRedact ? (
+                <>
+                  <button type='button' className='button profile__button' onClick={onClikRedact}>Редактировать</button>
+                  <button type='button' className='button profile__button profile__button_style_exit' onClick={onUserExit}>Выйти из аккаунта</button>
+                </>
+              ) : (
+                <button type='submit' className={`button profile__button-submit ${!isValid ? 'profile__button-submit_disabled' : ''}`} disabled={!isValid}>Сохранить</button>
+              )
             }
           </div>
         </form>

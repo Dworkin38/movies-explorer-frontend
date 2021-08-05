@@ -40,7 +40,6 @@ const App = ({ config, ...props }) => {
         if (res) {
           setToken(localStorage.getItem('token'));
           setCurrentUser((oldCurrentUser) => ({ ...oldCurrentUser, loggedIn: true }));
-          history.push("/movies");
         }
       })
         .catch((error) => {
@@ -49,10 +48,11 @@ const App = ({ config, ...props }) => {
     }
   };
 
-  const handlerLogin = ({ password, email }) => {
+  const handlerLogin = ({ password, email }, setIsLoading) => {
     if (!email || !password) {
       return;
     }
+    setIsLoading(true);
     MainApi.authorize(password, email)
       .then((data) => {
         if (data.token) {
@@ -64,21 +64,25 @@ const App = ({ config, ...props }) => {
       })
       .catch((error) => {
         handlerOpenPopup(error);
-      });
+      })
+      .finally(() => { setIsLoading(false); });
   };
 
-  const handlerRegister = ({ name, password, email }) => {
+  const handlerRegister = ({ name, password, email }, setIsLoading) => {
+    setIsLoading(true);
     MainApi.register(name, password, email)
       .then((res) => {
-        history.push('/signin');
+        handlerLogin({ password, email }, setIsLoading);
         handlerOpenPopup('Вы успешно зарегистрировались!');
       })
       .catch((error) => {
         handlerOpenPopup(error);
-      });
+      })
+      .finally(() => { setIsLoading(false); });
   };
 
-  const handlerUpdateMe = ({ name, email }) => {
+  const handlerUpdateMe = ({ name, email }, setIsLoading) => {
+    setIsLoading(true);
     MainApi.updateMe(token, name, email)
       .then(({ data }) => {
         setCurrentUser((oldCurrentUser) => ({ name: data.name, email: data.email, loggedIn: true }));
@@ -86,7 +90,8 @@ const App = ({ config, ...props }) => {
       })
       .catch((error) => {
         handlerOpenPopup(error);
-      });
+      })
+      .finally(() => { setIsLoading(false); });
   };
 
   const handlerUserInfo = (token) => {
@@ -124,7 +129,7 @@ const App = ({ config, ...props }) => {
     setLike(true);
     MainApi.saveMovie(token, movie)
       .then((data) => {
-        handlerGetSavedMovies();;
+        handlerGetSavedMovies();
       })
       .catch((error) => {
         setLike(false);
@@ -146,15 +151,17 @@ const App = ({ config, ...props }) => {
   };
 
   React.useEffect(() => {
+    if (!currentUser.loggedIn) {
+      handlerTokenCheck();
+    }
+  }, []);
+
+  React.useEffect(() => {
     if (currentUser.loggedIn) {
       handlerUserInfo(token);
       handlerGetSavedMovies();
     }
   }, [currentUser.loggedIn, token]);
-
-  React.useEffect(() => {
-    handlerTokenCheck();
-  }, []);
 
   return (
     <>
@@ -200,10 +207,18 @@ const App = ({ config, ...props }) => {
                 }
               </Route>
               <Route path='/signup'>
-                <Register onRegister={handlerRegister} />
+                {
+                  currentUser.loggedIn ?
+                    <Redirect to='/movies' />
+                    : <Register onRegister={handlerRegister} />
+                }
               </Route>
               <Route path='/signin'>
-                <Login onLogin={handlerLogin} />
+                {
+                  currentUser.loggedIn ?
+                    <Redirect to='/movies' />
+                    : <Login onLogin={handlerLogin} />
+                }
               </Route>
               <Route exact path='/'>
                 <Main config={config.main} />

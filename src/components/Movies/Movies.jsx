@@ -18,6 +18,7 @@ const Movies = ({ config, onLike, onDelete, ...props }) => {
   const { handlerOpenPopup } = React.useContext(PopupContext);
   const [movies, setMovies] = React.useState();
   const { findMovies, searchMovies } = useSearchMovies();
+  const [moviesDisplay, setMoviesDisplay] = React.useState();
   const [searchQuery, setSearchQuery] = React.useState({
     text: '',
     isShortFilm: false,
@@ -34,6 +35,19 @@ const Movies = ({ config, onLike, onDelete, ...props }) => {
       })
       .catch((errors => handlerOpenPopup(errors)));
   }, [handlerOpenPopup]);
+
+  React.useEffect(() => {
+    if (findMovies && findMovies.length) {
+      localStorage.setItem('filteredMovies', JSON.stringify(findMovies));
+      setMoviesDisplay(findMovies);
+    }
+  }, [findMovies]);
+
+  React.useEffect(()=> {
+    if ( localStorage.getItem('filteredMovies') ) {
+      setMoviesDisplay(JSON.parse(localStorage.getItem('filteredMovies')));
+    }
+  }, []);
   
   return (
     <>
@@ -51,7 +65,7 @@ const Movies = ({ config, onLike, onDelete, ...props }) => {
       </Header>
       <main className='movies'>
         <SearchForm onSearch={handlerSearchFilm} values={searchQuery} onChange={setSearchQuery} />
-        <MovieCardList isSaved={false} movies={findMovies} onLike={onLike} onDelete={onDelete} />
+        <MovieCardList isSaved={false} movies={moviesDisplay} onLike={onLike} onDelete={onDelete} />
       </main>
       <Footer footerLinks={config.footerLinks} />
     </>
