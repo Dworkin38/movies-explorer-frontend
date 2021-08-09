@@ -1,0 +1,12 @@
+export const SMALL_WIDTH = 450;
+export const MEDIUM_WIDTH = 768;
+export const LARGE_WIDTH = 910;
+export const VERY_LARGE_WIDTH = 1200;
+export const COUNT_CARDS_VERY_LARGE_WIDTH = 12;
+export const COUNT_CARDS_LARGE_WIDTH = 12;
+export const COUNT_CARDS_MEDIUM_WIDTH = 8;
+export const COUNT_CARDS_SMALL_WIDTH = 5;
+export const STEP_UP_CARDS_VERY_LARGE_WIDTH = 4;
+export const STEP_UP_CARDS_LARGE_WIDTH = 3;
+export const STEP_UP_CARDS_MEDIUM_WIDTH = 2;
+export const STEP_UP_CARDS_SMALL_WIDTH = 1;

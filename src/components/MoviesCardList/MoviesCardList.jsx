@@ -22,7 +22,7 @@ const MovieCardList = ({ isSaved, movies,onLike, onDelete, ...props }) => {
               ))}
             </ul>
             <div className='movie-card-list__button-wrapper'>
-              {!isSaved && movies.length > countCards && <button className='button movie-card-list__button' onClick={handlerMoreButtonClick}>Ещё</button>}
+              {!isSaved && movies.length > (countCards + moreCards*stepUpCards) && <button className='button movie-card-list__button' onClick={handlerMoreButtonClick}>Ещё</button>}
             </div>
           </>) : (<p className='movie-card-list__message'>Ничего не найдено</p>)
         ) : (

@@ -15,7 +15,7 @@ export const useSearchMovies = () => {
           (movie.year && movie.year.match(searchTextRegExp)) ||
           (movie.country && movie.country.match(searchTextRegExp))
         ) &&
-          (searchQuery.isShortFilm ? movie.duration <= 40 : movie.duration > 40)
+          (searchQuery.isShortFilm ? movie.duration <= 40 : movie.duration >= 0)
       )
     );
   }

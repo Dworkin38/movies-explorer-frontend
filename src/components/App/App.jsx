@@ -164,72 +164,70 @@ const App = ({ config, ...props }) => {
   }, [currentUser.loggedIn, token]);
 
   return (
-    <>
-      <CurrentUserContext.Provider value={{ currentUser }}>
-        <SavedMoviesContext.Provider value={{ savedMovies }}>
-          <PopupContext.Provider value={{ popupMessage, handlerOpenPopup }}>
-            <Switch>
-              <Route path='/movies'>
-                {
-                  currentUser.loggedIn ?
-                    <ProtectedRoute
-                      path='/movies'
-                      loggedIn={currentUser.loggedIn}
-                      config={config.main}
-                      onLike={handlerMoviesLike}
-                      onDelete={handlerMoviesDelete}
-                      component={Movies} />
-                    : <Redirect to='/' />
-                }
-              </Route>
-              <Route path='/saved-movies'>
-                {
-                  currentUser.loggedIn ?
-                    <ProtectedRoute
-                      path='/saved-movies'
-                      loggedIn={currentUser.loggedIn}
-                      config={config.main}
-                      onDelete={handlerMoviesDelete}
-                      component={SavedMovies} />
-                    : <Redirect to='/' />
-                }
-              </Route>
-              <Route path='/profile'>
-                {
-                  currentUser.loggedIn ?
-                    <ProtectedRoute
-                      path='/profile'
-                      loggedIn={currentUser.loggedIn}
-                      onUpdateMe={handlerUpdateMe}
-                      onUserExit={handlerUserExit}
-                      component={Profile} />
-                    : <Redirect to='/' />
-                }
-              </Route>
-              <Route path='/signup'>
-                {
-                  currentUser.loggedIn ?
-                    <Redirect to='/movies' />
-                    : <Register onRegister={handlerRegister} />
-                }
-              </Route>
-              <Route path='/signin'>
-                {
-                  currentUser.loggedIn ?
-                    <Redirect to='/movies' />
-                    : <Login onLogin={handlerLogin} />
-                }
-              </Route>
-              <Route exact path='/'>
-                <Main config={config.main} />
-              </Route>
-              <Route component={NotFoundPage} />
-            </Switch>
-            <Popup isOpen={isPopupOpen} handlerPopupClose={handlerClosePopup} />
-          </PopupContext.Provider>
-        </SavedMoviesContext.Provider>
-      </CurrentUserContext.Provider>
-    </>
+    <CurrentUserContext.Provider value={{ currentUser }}>
+      <SavedMoviesContext.Provider value={{ savedMovies }}>
+        <PopupContext.Provider value={{ popupMessage, handlerOpenPopup }}>
+          <Switch>
+            <Route path='/movies'>
+              {
+                currentUser.loggedIn ?
+                  <ProtectedRoute
+                    path='/movies'
+                    loggedIn={currentUser.loggedIn}
+                    config={config.main}
+                    onLike={handlerMoviesLike}
+                    onDelete={handlerMoviesDelete}
+                    component={Movies} />
+                  : <Redirect to='/' />
+              }
+            </Route>
+            <Route path='/saved-movies'>
+              {
+                currentUser.loggedIn ?
+                  <ProtectedRoute
+                    path='/saved-movies'
+                    loggedIn={currentUser.loggedIn}
+                    config={config.main}
+                    onDelete={handlerMoviesDelete}
+                    component={SavedMovies} />
+                  : <Redirect to='/' />
+              }
+            </Route>
+            <Route path='/profile'>
+              {
+                currentUser.loggedIn ?
+                  <ProtectedRoute
+                    path='/profile'
+                    loggedIn={currentUser.loggedIn}
+                    onUpdateMe={handlerUpdateMe}
+                    onUserExit={handlerUserExit}
+                    component={Profile} />
+                  : <Redirect to='/' />
+              }
+            </Route>
+            <Route path='/signup'>
+              {
+                currentUser.loggedIn ?
+                  <Redirect to='/movies' />
+                  : <Register onRegister={handlerRegister} />
+              }
+            </Route>
+            <Route path='/signin'>
+              {
+                currentUser.loggedIn ?
+                  <Redirect to='/movies' />
+                  : <Login onLogin={handlerLogin} />
+              }
+            </Route>
+            <Route exact path='/'>
+              <Main config={config.main} />
+            </Route>
+            <Route component={NotFoundPage} />
+          </Switch>
+          <Popup isOpen={isPopupOpen} handlerPopupClose={handlerClosePopup} />
+        </PopupContext.Provider>
+      </SavedMoviesContext.Provider>
+    </CurrentUserContext.Provider>
   );
 };
 
