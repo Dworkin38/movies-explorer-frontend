@@ -34,8 +34,8 @@ const SavedMovies = ({ config, onDelete, ...props }) => {
   React.useEffect(() => {
     if (findMovies && findMovies.length) {
       localStorage.setItem('savedMovies', JSON.stringify(findMovies));
-      setMoviesDisplay(findMovies);
     }
+    setMoviesDisplay(findMovies);
   }, [findMovies]);
 
   React.useEffect(()=> {
