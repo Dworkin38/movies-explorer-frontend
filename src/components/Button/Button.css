@@ -1,0 +1,9 @@
+.button {
+  font-family: 'Inter', 'Arial', sans-serif;
+  cursor: pointer;
+  transition: opacity .3s ease-in;
+}
+
+.button:hover {
+  opacity: 0.8;
+}

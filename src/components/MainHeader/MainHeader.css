@@ -1,0 +1,17 @@
+.main-header {
+  width: 100%;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  padding: 0 0 23px;
+  margin: 0;
+  border-bottom: 1px solid #000;
+}
+
+@media screen and (max-width: 450px) {
+  .main-header {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 0 0 28px;
+  }
+}
