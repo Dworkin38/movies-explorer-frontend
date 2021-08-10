@@ -37,10 +37,16 @@ const Movies = ({ config, onLike, onDelete, ...props }) => {
   }, [handlerOpenPopup]);
 
   React.useEffect(() => {
+    if(findMovies && findMovies.length) {
+      searchMovies(movies, searchQuery);
+    }
+  }, [searchQuery.isShortFilm]);
+
+  React.useEffect(() => {
     if (findMovies && findMovies.length) {
       localStorage.setItem('filteredMovies', JSON.stringify(findMovies));
-      setMoviesDisplay(findMovies);
     }
+    setMoviesDisplay(findMovies);
   }, [findMovies]);
 
   React.useEffect(()=> {

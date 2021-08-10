@@ -30,6 +30,10 @@ const Profile = ({ onUpdateMe, onUserExit, ...props }) => {
     onUpdateMe(values, setIsLoading);
   };
 
+  const isValidProfileForm = () => {
+    return isValid && (!(currentUser.name === values.name) || !(currentUser.email === values.email));
+  }
+  
   return (
     <>
       {isLoading && <Preloader />}
@@ -91,7 +95,12 @@ const Profile = ({ onUpdateMe, onUserExit, ...props }) => {
                   <button type='button' className='button profile__button profile__button_style_exit' onClick={onUserExit}>Выйти из аккаунта</button>
                 </>
               ) : (
-                <button type='submit' className={`button profile__button-submit ${!isValid ? 'profile__button-submit_disabled' : ''}`} disabled={!isValid}>Сохранить</button>
+                <button
+                  type='submit'
+                  className={`button profile__button-submit ${ !isValidProfileForm() ? 'profile__button-submit_disabled' : ''}`}
+                  disabled={ !isValidProfileForm() }>
+                  Сохранить
+                </button>
               )
             }
           </div>

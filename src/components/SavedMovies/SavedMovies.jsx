@@ -32,6 +32,12 @@ const SavedMovies = ({ config, onDelete, ...props }) => {
   }, [savedMovies]);
 
   React.useEffect(() => {
+    if(findMovies && findMovies.length) {
+      searchMovies(savedMovies, searchQuery);
+    }
+  }, [searchQuery.isShortFilm]);
+
+  React.useEffect(() => {
     if (findMovies && findMovies.length) {
       localStorage.setItem('savedMovies', JSON.stringify(findMovies));
     }
